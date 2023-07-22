@@ -1,0 +1,308 @@
+@import "reset";
+@import 'mixin';
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    scroll-behavior: smooth;
+}
+
+$main-light-color: #fff;
+$main-gray-color: #898989;
+$secondary-gray-color: #727272;
+$main-dark-color: #242424;
+$secondary-dark-color: #3A3A3A;
+$light-color: #FAF3EA;
+$main-brown-color: #B88E2F;
+$black-color: #000;
+$gray: #9f9f9fb3;
+
+@mixin font($bg-color: "", $f-size, $f-style, $f-height: 24px){
+    @if $bg-color == "dark"{
+        color: $main-dark-color;
+    }@else if $bg-color == "s-dark"{
+        color: $secondary-dark-color;
+    }@else if $bg-color == "light"{
+        color: $main-light-color;
+    }@else if $bg-color == "s-grey"{
+        color: $secondary-gray-color;
+    }@else if $bg-color == "grey"{
+        color: $main-gray-color;
+    }@else{
+        color: $black-color;
+    }
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: $f-size;
+    font-style: $f-style;
+    line-height: $f-height;
+}
+@mixin button($padding, $bg-color, $border){
+    padding: $padding;
+    @if $bg-color == "light"{
+      color: $main-light-color;
+      background-color: $main-brown-color;
+    }@else if $bg-color == "dark"{
+        color: $main-dark-color ;
+        background-color: $light-color;
+    }@else if $bg-color == "brown"{
+        color: $main-brown-color;
+        background-color: $main-light-color;
+    }border: $border;
+}
+
+header{
+    width: 100%;
+}
+.container{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+    .nav__menu{
+        display: flex;
+        gap: 75px;
+        a{
+            @include font(#000, 16px, -style, -height);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover{
+            color: #B88E2F;
+        }
+    }
+    .nav__icons{
+        display: flex;
+        align-items: center;
+        gap: 45px;
+    }
+}
+.hero{
+    background-image: url(../images/header-img.png);
+    background-size: 100%;
+    text-align: center;
+    padding-bottom: 125px;
+    img{
+        margin-top: 100px;
+    }
+    h1{
+        @include font("", 48px, -style, -height);
+        font-weight: 500;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .bold{
+        @include font("", 16px, -style, -height);
+        font-weight: 500;
+    }
+    i{
+        margin: 0 6px;
+    }
+    strong{
+        @include font("", 16px, -style, -height);
+    }
+}
+
+main{
+    width: 100%;
+    .product__items{
+        padding-top: 35px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr;
+        margin-bottom: 64px;
+        .product__item{
+            h3{
+                @include font("black", 28px, -style, 126.5%);
+                font-weight: 500;
+                max-width: 223px;
+                margin-top: 20px;
+                margin-bottom: 21px;
+            }
+            a{
+                text-decoration: none;
+                padding: 5px;
+                border-bottom: 2px solid;
+                color: $secondary-gray-color;
+            }
+            p{
+                @include font("black", 24px, -style, 126.5%);
+                font-weight: 500;
+                margin-top: 18px;
+                margin-bottom: 6px;
+            }
+            strong{
+                @include font("black", 18px, -style, -height);
+                font-weight: 500;
+            }
+            .p__text{
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                .stars{
+                    padding: 0 5px;
+                    border-right: 2px solid #727272;
+                }
+                .p{
+                    @include font("s-grey", 13px, -style, -height);
+                }
+            }
+            .p__item--txt{
+                margin-top: 35px;
+            }
+            button{
+                @include button(7px 28px, "light", none);
+                border-radius: 6px;
+                @include font("light", 14px, -style, 126.5%);
+                font-weight: 600;
+            }
+            button:hover{
+                background-color: transparent;
+                color: $main-brown-color;
+                border: 1px solid $main-brown-color;
+            }
+        }
+
+    }
+
+    .tables{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid #E8E8E8;
+        margin-bottom: 120px;
+        .table{
+            padding: 0 50px;
+            border-right: 1px solid #E8E8E8;
+            p{
+                @include font("black", 28px, -style, 126.5%);
+                font-weight: 500;
+                margin-top: 42px;
+                margin-bottom: 28px;
+            }
+            li{
+                @include font("black", 20px, -style, 126.5%);
+                margin-bottom: 34px;
+            }
+            .menu__t{
+                li{
+                    margin-bottom: 50px;
+                }
+                :nth-child(2){
+                    margin-bottom: 100px;
+                }
+                :last-child{
+                    margin-top: 135px;
+                }
+            }
+        }
+        .table2{
+            li{
+                margin-bottom: 45px;
+            }
+            padding-top: 100px;
+            .table__menu{
+                margin-top: 110px;
+            }
+            .mm{
+                margin-top: 130px;
+                li{
+                    margin-bottom: 35px;
+                }
+            }
+        }
+
+        button{
+            @include button(17px 48px, "light", 1px solid transparent);
+            border-radius: 6px;
+            @include font("light", 20px, -style, -height);
+            margin-top: 50px;
+            transition: 1s;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: transparent;
+            color: $main-brown-color;
+            border: 1px solid $main-brown-color;
+        }
+
+    }
+
+    .company{
+        background-color: $light-color;
+        padding: 100px 0;
+        .company__menu{
+            display: flex;
+            .c__menu--item{
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                strong{
+                    @include font("dark", 25px, -style, 150%);
+                    font-weight: 600;
+                }
+                p{
+                    @include font("grey", 20px, -style, 150%);
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+}
+
+footer{
+    border-bottom: 1px solid #d9d9d9;
+    padding: 50px 0;
+    .footer__nav{
+        display: flex;
+        border-bottom: 1px solid #d9d9d9;
+        .footer__menu{
+            flex-grow: 1;
+            h3{
+                @include font("black", 24px, -style, -height);
+                margin-bottom: 50px;
+                font-weight: 700;
+            }
+            p{
+                @include font($gray, 16px, -style, 24px);
+                margin-bottom: 50px;
+                max-width: 285px;
+            }
+            li{
+                @include font("black", 16px, -style, -height);
+                font-weight: 500;
+                margin-bottom: 46px;
+            }
+            .inpb{
+                display: flex;
+                gap: 11px;
+                input{
+                    @include font("s-grey", 14px, -style, -height);
+                    outline: none;
+                    border: none;
+                    border-bottom: 1px solid #000;
+                }
+                button{
+                    @include font("balck", 14px, -style, -height);
+                    font-weight: 500;
+                    border: none;
+                    background-color: transparent;
+                    border-bottom: 1px solid #000;
+                }
+
+            }
+        }
+    }
+    p{
+        @include font("black", 16px, -style, -height);
+        margin: 40px 0;
+    }
+}
