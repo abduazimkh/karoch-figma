@@ -218,15 +218,16 @@ main{
             }
         }
 
-        button{
+        a{
             @include button(17px 48px, "light", 1px solid transparent);
             border-radius: 6px;
             @include font("light", 20px, -style, -height);
             margin-top: 50px;
             transition: 1s;
             cursor: pointer;
+            text-decoration: none;
         }
-        button:hover{
+        a:hover{
             background-color: transparent;
             color: $main-brown-color;
             border: 1px solid $main-brown-color;
