@@ -211,12 +211,13 @@ main{
     .home__product{
         margin-bottom: 80px;
         padding: 0 550px;
-        button{
+        a{
             @include button(12px 74px, "brown", 2px solid $main-brown-color);
             @include font("brown", 16px, -style, 150%);
             font-weight: 600;
+            text-decoration: none;
         }
-        button:hover{
+        a:hover{
             color: #fff;
             background-color: #B88E2F;
         }
