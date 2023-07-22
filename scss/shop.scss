@@ -1,0 +1,283 @@
+@import "reset";
+@import 'mixin';
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    scroll-behavior: smooth;
+}
+
+$main-light-color: #fff;
+$main-gray-color: #898989;
+$secondary-gray-color: #727272;
+$main-dark-color: #242424;
+$secondary-dark-color: #3A3A3A;
+$light-color: #FAF3EA;
+$main-brown-color: #B88E2F;
+$black-color: #000;
+$gray: #9f9f9fb3;
+
+@mixin font($bg-color: "", $f-size, $f-style, $f-height: 24px){
+    @if $bg-color == "dark"{
+        color: $main-dark-color;
+    }@else if $bg-color == "s-dark"{
+        color: $secondary-dark-color;
+    }@else if $bg-color == "light"{
+        color: $main-light-color;
+    }@else if $bg-color == "s-grey"{
+        color: $secondary-gray-color;
+    }@else if $bg-color == "grey"{
+        color: $main-gray-color;
+    }@else if $bg-color == "brown"{
+        color: $main-brown-color;
+    }@else{
+        color: $black-color;
+    }
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: $f-size;
+    font-style: $f-style;
+    line-height: $f-height;
+}
+@mixin button($padding, $bg-color, $border){
+    padding: $padding;
+    @if $bg-color == "light"{
+      color: $main-light-color;
+      background-color: $main-brown-color;
+    }@else if $bg-color == "dark"{
+        color: $main-dark-color ;
+        background-color: $light-color;
+    }@else if $bg-color == "brown"{
+        color: $main-brown-color;
+        background-color: $main-light-color;
+    }border: $border;
+}
+
+header{
+    width: 100%;
+}
+.container{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+    .nav__menu{
+        display: flex;
+        gap: 75px;
+        a{
+            @include font(#000, 16px, -style, -height);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover{
+            color: #B88E2F;
+        }
+    }
+    .nav__icons{
+        display: flex;
+        align-items: center;
+        gap: 45px;
+    }
+}
+.hero{
+    background-image: url(../images/header-img.png);
+    background-size: 100%;
+    text-align: center;
+    padding-bottom: 125px;
+    img{
+        margin-top: 100px;
+    }
+    h1{
+        @include font("", 48px, -style, -height);
+        font-weight: 500;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .bold{
+        @include font("", 16px, -style, -height);
+        font-weight: 500;
+    }
+    i{
+        margin: 0 6px;
+    }
+    strong{
+        @include font("", 16px, -style, -height);
+    }
+}
+
+main{
+    width: 100%;
+    .shop__tob--bar1{
+        width: 100%;
+        background-color: $light-color;
+    }
+    .shop__tob--bar{
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 22px 30px;
+        margin-bottom: 63px;
+        .shop__bar--left{
+            display: flex;
+            gap: 20px;
+            flex-grow: 1;
+            strong{
+                @include font("black", 20px, -style, -height);
+                font-weight: 500;
+            }
+            p{
+                @include font("black", 16px, -style, -height);
+                border-left: 2px solid #9f9f9f;
+                padding-left: 20px;
+            }
+        }
+        .shop__bar--right{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            p{
+                @include font("black", 20px, -style, -height)
+            }
+            b{
+                background-color: #fff;
+                @include button(12px 17px, "grey", none);
+                @include font("grey", 20px, -style, -height);
+
+            }
+            .b{
+                @include button(12px 57px 12px 17px, "grey", none);
+            }
+        }
+    }
+
+    .shop__cards{
+        padding: 0 30px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        .shop__card{
+            max-width: 285px;
+            background-color: #f4f5f7;
+            margin-bottom: 85px;
+            ul{
+                padding: 16px 16px 30px 16px;
+                p{
+                    @include font($secondary-dark-color, 24px, -style, 120%);
+                    font-weight: 600;
+                }
+                li{
+                    @include font("grey", 16px, -style, 150%);
+                    font-weight: 500;
+                    padding: 8px 0;
+                }
+                strong{
+                    display: inline-block;
+                    @include font($secondary-dark-color, 20px, -style, 150%);
+                    font-weight: 600;
+                }
+                del{
+                    @include font("s-grey", 16px, -style, 150%);
+                    margin-left: 8px;
+                }
+            }
+        }
+
+    }
+
+    .shop__scroll{
+        margin-bottom: 80px;
+        padding: 0 500px;
+        ul{
+            display: flex;
+            gap: 40px;
+            li{
+                @include font("light", 20px, -style, -height);
+                @include button(15px 20px, "dark", 1px solid transparent);
+                border-radius: 10px;
+            }
+            li:hover{
+                @include button(15px 20px, "light", 1px solid transparent);
+            }
+        }
+    }
+
+
+    .company{
+        background-color: $light-color;
+        padding: 100px 0;
+        .company__menu{
+            display: flex;
+            .c__menu--item{
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                strong{
+                    @include font("dark", 25px, -style, 150%);
+                    font-weight: 600;
+                }
+                p{
+                    @include font("grey", 20px, -style, 150%);
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+}
+
+footer{
+    width: 100%;
+    border-top: 1px solid #d9d9d9;
+    padding: 50px 0;
+    .footer__nav{
+        display: flex;
+        border-bottom: 1px solid #d9d9d9;
+        .footer__menu{
+            flex-grow: 1;
+            h3{
+                @include font("black", 24px, -style, -height);
+                margin-bottom: 50px;
+                font-weight: 700;
+            }
+            p{
+                @include font($gray, 16px, -style, 24px);
+                margin-bottom: 50px;
+                max-width: 285px;
+            }
+            li{
+                @include font("black", 16px, -style, -height);
+                font-weight: 500;
+                margin-bottom: 46px;
+            }
+            .inpb{
+                display: flex;
+                gap: 11px;
+                input{
+                    @include font("s-grey", 14px, -style, -height);
+                    outline: none;
+                    border: none;
+                    border-bottom: 1px solid #000;
+                }
+                button{
+                    @include font("balck", 14px, -style, -height);
+                    font-weight: 500;
+                    border: none;
+                    background-color: transparent;
+                    border-bottom: 1px solid #000;
+                }
+
+            }
+        }
+    }
+    p{
+        @include font("black", 16px, -style, -height);
+        margin: 40px 0;
+    }
+}
