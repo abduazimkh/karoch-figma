@@ -157,13 +157,14 @@ main{
             .p__item--txt{
                 margin-top: 35px;
             }
-            button{
+            a{
                 @include button(7px 28px, "light", none);
                 border-radius: 6px;
                 @include font("light", 14px, -style, 126.5%);
                 font-weight: 600;
+                text-decoration: none;
             }
-            button:hover{
+            a:hover{
                 background-color: transparent;
                 color: $main-brown-color;
                 border: 1px solid $main-brown-color;
@@ -218,15 +219,16 @@ main{
             }
         }
 
-        button{
+        a{
             @include button(17px 48px, "light", 1px solid transparent);
             border-radius: 6px;
             @include font("light", 20px, -style, -height);
             margin-top: 50px;
             transition: 1s;
             cursor: pointer;
+            text-decoration: none;
         }
-        button:hover{
+        a:hover{
             background-color: transparent;
             color: $main-brown-color;
             border: 1px solid $main-brown-color;
