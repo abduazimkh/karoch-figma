@@ -1,0 +1,45 @@
+$main-light-color: #fff;
+$main-gray-color: #898989;
+$secondary-gray-color: #727272;
+$main-dark-color: #242424;
+$secondary-dark-color: #3A3A3A;
+$light-color: #FAF3EA;
+$main-brown-color: #B88E2F;
+$black-color: #000;
+$gray: #9f9f9fb3;
+
+@mixin font($bg-color: "", $f-size, $f-style, $f-height: 24px){
+    @if $bg-color == "dark"{
+        color: $main-dark-color;
+    }@else if $bg-color == "s-dark"{
+        color: $secondary-dark-color;
+    }@else if $bg-color == "light"{
+        color: $main-light-color;
+    }@else if $bg-color == "s-grey"{
+        color: $secondary-gray-color;
+    }@else if $bg-color == "grey"{
+        color: $main-gray-color;
+    }@else if $bg-color == "brown"{
+        color: $main-brown-color;
+    }@else{
+        color: $black-color;
+    }
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: $f-size;
+    font-style: $f-style;
+    line-height: $f-height;
+}
+@mixin button($padding, $bg-color, $border){
+    padding: $padding;
+    @if $bg-color == "light"{
+      color: $main-light-color;
+      background-color: $main-brown-color;
+    }@else if $bg-color == "dark"{
+        color: $main-dark-color ;
+        background-color: $light-color;
+    }@else if $bg-color == "brown"{
+        color: $main-brown-color;
+        background-color: $main-light-color;
+    }border: $border;
+}

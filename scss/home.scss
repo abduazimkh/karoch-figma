@@ -1,0 +1,275 @@
+@import "reset";
+@import 'mixin';
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    scroll-behavior: smooth;
+}
+
+// $main-light-color: #fff;
+// $main-gray-color: #898989;
+// $secondary-gray-color: #727272;
+// $main-dark-color: #242424;
+// $secondary-dark-color: #3A3A3A;
+// $light-color: #FAF3EA;
+// $main-brown-color: #B88E2F;
+// $black-color: #000;
+// $gray: #9f9f9fb3;
+
+// @mixin font($bg-color: "", $f-size, $f-style, $f-height: 24px){
+//     @if $bg-color == "dark"{
+//         color: $main-dark-color;
+//     }@else if $bg-color == "s-dark"{
+//         color: $secondary-dark-color;
+//     }@else if $bg-color == "light"{
+//         color: $main-light-color;
+//     }@else if $bg-color == "s-grey"{
+//         color: $secondary-gray-color;
+//     }@else if $bg-color == "grey"{
+//         color: $main-gray-color;
+//     }@else if $bg-color == "brown"{
+//         color: $main-brown-color;
+//     }@else{
+//         color: $black-color;
+//     }
+//     font-family: "Poppins", sans-serif;
+//     font-weight: 400;
+//     font-size: $f-size;
+//     font-style: $f-style;
+//     line-height: $f-height;
+// }
+// @mixin button($padding, $bg-color, $border){
+//     padding: $padding;
+//     @if $bg-color == "light"{
+//       color: $main-light-color;
+//       background-color: $main-brown-color;
+//     }@else if $bg-color == "dark"{
+//         color: $main-dark-color ;
+//         background-color: $light-color;
+//     }@else if $bg-color == "brown"{
+//         color: $main-brown-color;
+//         background-color: $main-light-color;
+//     }border: $border;
+// }
+.container{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+header{
+    width: 100%;
+    background-color: #ebebea;
+}
+.nav{
+    background-color: #fff;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+    .nav__menu{
+        display: flex;
+        gap: 75px;
+        a{
+            @include font(#000, 16px, -style, -height);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover{
+            color: #B88E2F;
+        }
+    }
+    .nav__icons{
+        display: flex;
+        align-items: center;
+        gap: 45px;
+    }
+}
+.hero{
+    max-width: 1440px;
+    margin: auto;
+    background-image: url(../images/home-img.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 716px;
+    margin-bottom: 80px;
+    .hero__title{
+        padding-top: 153px;
+        padding-bottom: 200px;
+        padding: 62px 56px 37px 40px;
+        position: absolute;
+        right: 5%;
+        top: 26%;
+        background-color: #fff3e3;
+        strong{
+            @include font("", 16px, 3px, -height);
+            font-weight: 600;
+        }
+        h1{
+            @include font("brown", 52px, -style, 65px);
+            font-weight: 700;
+            max-width: 559px;
+            margin: 4px 0 17px 0;
+        }
+        p{
+            @include font("", 18px, -style, 24px);
+            font-weight: 500;
+            max-width: 546px;
+        }
+        button{
+            margin-top: 46px;
+            @include font("light", 16px, -style, -height);
+            font-weight: 700;
+            text-transform: uppercase;
+            @include button(25px 72px, "light", 1px solid transparent);
+        }
+    }
+}
+
+main{
+    width: 100%;
+
+    .home__title{
+        text-align: center;
+        margin-bottom: 50px;
+        h2{
+            @include font($main-dark-color, 32px, -style, -height);
+            font-weight: 700;
+        }
+        p{
+            @include font("s-grey", 20px, -style, -height);
+            margin-top: 5px;
+        }
+    }
+
+    .browse__cards{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        margin-bottom: 50px;
+        .browse__card{
+            text-align: center;
+            img{
+                border-radius: 10px;
+            }
+            strong{
+                @include font($main-dark-color, 24px, -style, -height);
+                display: block;
+                margin-top: 20px;
+                font-weight: 600px;
+            }   
+        }
+    }
+
+    h2{
+        text-align: center;
+        margin-bottom: 50px;
+        @include font($secondary-dark-color, 32px, -style, -height);
+        font-weight: 700;
+    }
+
+    .shop__cards{
+        padding: 0 30px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        .shop__card{
+            max-width: 285px;
+            background-color: #f4f5f7;
+            margin-bottom: 85px;
+            ul{
+                padding: 16px 16px 30px 16px;
+                p{
+                    @include font($secondary-dark-color, 24px, -style, 120%);
+                    font-weight: 600;
+                }
+                li{
+                    @include font("grey", 16px, -style, 150%);
+                    font-weight: 500;
+                    padding: 8px 0;
+                }
+                strong{
+                    display: inline-block;
+                    @include font($secondary-dark-color, 20px, -style, 150%);
+                    font-weight: 600;
+                }
+                del{
+                    @include font("s-grey", 16px, -style, 150%);
+                    margin-left: 8px;
+                }
+            }
+
+
+        }
+
+    }
+
+    .home__product{
+        margin-bottom: 80px;
+        padding: 0 550px;
+        button{
+            @include button(12px 74px, "brown", 2px solid $main-brown-color);
+            @include font("brown", 16px, -style, 150%);
+            font-weight: 600;
+        }
+        button:hover{
+            color: #fff;
+            background-color: #B88E2F;
+        }
+    }
+
+}
+
+footer{
+    width: 100%;
+    border-top: 1px solid #d9d9d9;
+    padding: 50px 0;
+    .footer__nav{
+        display: flex;
+        border-bottom: 1px solid #d9d9d9;
+        .footer__menu{
+            flex-grow: 1;
+            h3{
+                @include font("black", 24px, -style, -height);
+                margin-bottom: 50px;
+                font-weight: 700;
+            }
+            p{
+                @include font($gray, 16px, -style, 24px);
+                margin-bottom: 50px;
+                max-width: 285px;
+            }
+            li{
+                @include font("black", 16px, -style, -height);
+                font-weight: 500;
+                margin-bottom: 46px;
+            }
+            .inpb{
+                display: flex;
+                gap: 11px;
+                input{
+                    @include font("s-grey", 14px, -style, -height);
+                    outline: none;
+                    border: none;
+                    border-bottom: 1px solid #000;
+                }
+                button{
+                    @include font("balck", 14px, -style, -height);
+                    font-weight: 500;
+                    border: none;
+                    background-color: transparent;
+                    border-bottom: 1px solid #000;
+                }
+
+            }
+        }
+    }
+    p{
+        @include font("black", 16px, -style, -height);
+        margin: 40px 0;
+    }
+}
