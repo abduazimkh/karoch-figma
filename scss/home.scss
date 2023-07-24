@@ -8,51 +8,52 @@
     scroll-behavior: smooth;
 }
 
-// $main-light-color: #fff;
-// $main-gray-color: #898989;
-// $secondary-gray-color: #727272;
-// $main-dark-color: #242424;
-// $secondary-dark-color: #3A3A3A;
-// $light-color: #FAF3EA;
-// $main-brown-color: #B88E2F;
-// $black-color: #000;
-// $gray: #9f9f9fb3;
+$main-light-color: #fff;
+$main-gray-color: #898989;
+$secondary-gray-color: #727272;
+$main-dark-color: #242424;
+$secondary-dark-color: #3A3A3A;
+$light-color: #FAF3EA;
+$main-brown-color: #B88E2F;
+$black-color: #000;
+$gray: #9f9f9fb3;
 
-// @mixin font($bg-color: "", $f-size, $f-style, $f-height: 24px){
-//     @if $bg-color == "dark"{
-//         color: $main-dark-color;
-//     }@else if $bg-color == "s-dark"{
-//         color: $secondary-dark-color;
-//     }@else if $bg-color == "light"{
-//         color: $main-light-color;
-//     }@else if $bg-color == "s-grey"{
-//         color: $secondary-gray-color;
-//     }@else if $bg-color == "grey"{
-//         color: $main-gray-color;
-//     }@else if $bg-color == "brown"{
-//         color: $main-brown-color;
-//     }@else{
-//         color: $black-color;
-//     }
-//     font-family: "Poppins", sans-serif;
-//     font-weight: 400;
-//     font-size: $f-size;
-//     font-style: $f-style;
-//     line-height: $f-height;
-// }
-// @mixin button($padding, $bg-color, $border){
-//     padding: $padding;
-//     @if $bg-color == "light"{
-//       color: $main-light-color;
-//       background-color: $main-brown-color;
-//     }@else if $bg-color == "dark"{
-//         color: $main-dark-color ;
-//         background-color: $light-color;
-//     }@else if $bg-color == "brown"{
-//         color: $main-brown-color;
-//         background-color: $main-light-color;
-//     }border: $border;
-// }
+@mixin font($bg-color: "", $f-size, $f-style, $f-height: 24px){
+    @if $bg-color == "dark"{
+        color: $main-dark-color;
+    }@else if $bg-color == "s-dark"{
+        color: $secondary-dark-color;
+    }@else if $bg-color == "light"{
+        color: $main-light-color;
+    }@else if $bg-color == "s-grey"{
+        color: $secondary-gray-color;
+    }@else if $bg-color == "grey"{
+        color: $main-gray-color;
+    }@else if $bg-color == "brown"{
+        color: $main-brown-color;
+    }@else{
+        color: $black-color;
+    }
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: $f-size;
+    font-style: $f-style;
+    line-height: $f-height;
+}
+@mixin button($padding, $bg-color, $border){
+    padding: $padding;
+    @if $bg-color == "light"{
+      color: $main-light-color;
+      background-color: $main-brown-color;
+    }@else if $bg-color == "dark"{
+        color: $main-dark-color ;
+        background-color: $light-color;
+    }@else if $bg-color == "brown"{
+        color: $main-brown-color;
+        background-color: $main-light-color;
+    }border: $border;
+}
+
 .container{
     max-width: 1400px;
     margin: 0 auto;
@@ -120,12 +121,17 @@ nav{
             font-weight: 500;
             max-width: 546px;
         }
-        button{
+        .button{
             margin-top: 46px;
             @include font("light", 16px, -style, -height);
             font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
             text-transform: uppercase;
-            @include button(25px 72px, "light", 1px solid transparent);
+            @include button(25px 72px, "light", 2px solid transparent);
+        }
+        .button:hover{
+            @include button(25px 72px, "brown", 2px solid $main-brown-color);
         }
     }
 }
@@ -151,6 +157,7 @@ main{
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr;
         margin-bottom: 50px;
+        gap: 50px 50px;
         .browse__card{
             text-align: center;
             img{
@@ -173,14 +180,19 @@ main{
     }
 
     .shop__cards{
+        margin-top: 100px;
         padding: 0 30px;
+        gap: 50px 30px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
         .shop__card{
+            position: relative;
             max-width: 285px;
             background-color: #f4f5f7;
             margin-bottom: 85px;
+            transition: 0.5s;
+            transform: scale(1);
             ul{
                 padding: 16px 16px 30px 16px;
                 p{
@@ -202,8 +214,60 @@ main{
                     margin-left: 8px;
                 }
             }
+        }
 
+        .productadd__cart{
+            display: none;
+            position: absolute;
+            width: 252px;
+            margin: auto;
+            text-align: center;
+            padding: 175px 20px;
+            box-sizing: border-box;
+            a{
+                @include font("brown", 16px, "", 150%);
+                @include button(12px 50px, "brown", none);
+                text-decoration: none;
+                font-weight: 600px;
+                display: inline-block;
+            }
+            .productadd__card--item{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 24px;   
+                // gap: 20px;
+                box-sizing: border-box;
+                ul{
+                    display: flex;
+                    align-items: center;
+                    gap: 2px;
+                    // max-width: 10px;
+                    margin-left: -15px;
+                    strong {
+                        @include font("light", 16px, "", 24px);
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
 
+        .shop__card:hover{
+            transform: scale(1.1);
+
+        }
+
+        .shop__card:hover .productadd__cart{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            background-color: rgba(51, 51, 51, 0.85);
+            opacity: 1;
+            
+            // transform: scale(1.1);
         }
 
     }
@@ -211,16 +275,95 @@ main{
     .home__product{
         margin-bottom: 80px;
         padding: 0 550px;
-        button{
+        a{
             @include button(12px 74px, "brown", 2px solid $main-brown-color);
             @include font("brown", 16px, -style, 150%);
             font-weight: 600;
+            text-decoration: none;
         }
-        button:hover{
+        a:hover{
             color: #fff;
             background-color: #B88E2F;
         }
     }
+
+    .bt__wrapper{
+        background-color: $light-color;
+        .bt__rooms{
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: 1fr;
+            align-items: center;
+            .bt__room__title{
+                text-align: left;
+                h2{
+                    @include font("s-dark", 40px, -style, 120%);
+                    font-weight: 700;
+                    max-width: 422px;
+                    text-align: left;
+                }
+                p{
+                    @include font("grey", 16px, -style, 150%);
+                    font-weight: 600;
+                    max-width: 368px;
+                }
+                a{
+                    @include font("light", 16px, -style, 150%);
+                    font-weight: 600;
+                    text-decoration: none;
+                    display: inline-block;
+                    margin-top: 25px;
+                    @include button(12px 36px, "light", 2px solid transparent);
+                }
+                a:hover{
+                    @include button(12px 36px, "brown", 2px solid $main-brown-color);
+                }
+            }
+
+            .bt__rooms__img{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                padding: 44px 0;
+                // width: 70%;
+                swiper-container {
+                    width: 400px;
+                    height: 582px;
+                  }
+              
+                  swiper-slide {
+                    text-align: center;
+                    font-size: 18px;
+                    background: #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                  }
+              
+                  swiper-slide img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                  }
+              
+                  swiper-container {
+                    margin-left: auto;
+                    margin-right: auto;
+                  }
+            }
+
+
+        }
+
+
+
+
+
+    }
+
+
+    
+
 
 }
 
