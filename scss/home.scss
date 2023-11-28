@@ -53,7 +53,9 @@ $gray: #9f9f9fb3;
         background-color: $main-light-color;
     }border: $border;
 }
-
+.close{
+    display: none;
+}
 .container{
     max-width: 1400px;
     margin: 0 auto;
@@ -273,8 +275,8 @@ main{
     }
 
     .home__product{
+        text-align: center;
         margin-bottom: 80px;
-        padding: 0 550px;
         a{
             @include button(12px 74px, "brown", 2px solid $main-brown-color);
             @include font("brown", 16px, -style, 150%);
@@ -373,6 +375,7 @@ footer{
     padding: 50px 0;
     .footer__nav{
         display: flex;
+        flex-wrap: wrap;
         border-bottom: 1px solid #d9d9d9;
         .footer__menu{
             flex-grow: 1;
@@ -414,5 +417,317 @@ footer{
     p{
         @include font("black", 16px, -style, -height);
         margin: 40px 0;
+    }
+}
+
+
+
+@media screen and (max-width: 1450px) {
+.hero{
+    background-position: bottom;
+}
+
+    main{
+        .browse__cards{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr;
+            margin-bottom: 50px;
+            gap: 50px 50px;
+            .browse__card{
+                text-align: center;
+                img{
+                    border-radius: 10px;
+                }
+                strong{
+                    @include font($main-dark-color, 24px, -style, -height);
+                    display: block;
+                    margin-top: 20px;
+                    font-weight: 600px;
+                }   
+            }
+        }
+    
+        h2{
+            text-align: center;
+            margin-bottom: 50px;
+            @include font($secondary-dark-color, 32px, -style, -height);
+            font-weight: 700;
+        }
+   
+        .shop__cards{
+            margin-top: 100px;
+            padding: 0 30px;
+            gap: 50px 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            .shop__card{
+                position: relative;
+                max-width: 285px;
+                background-color: #f4f5f7;
+                margin-bottom: 85px;
+                transition: 0.5s;
+                transform: scale(1);
+                ul{
+                    padding: 16px 16px 30px 16px;
+                    p{
+                        @include font($secondary-dark-color, 24px, -style, 120%);
+                        font-weight: 600;
+                    }
+                    li{
+                        @include font("grey", 16px, -style, 150%);
+                        font-weight: 500;
+                        padding: 8px 0;
+                    }
+                    strong{
+                        display: inline-block;
+                        @include font($secondary-dark-color, 20px, -style, 150%);
+                        font-weight: 600;
+                    }
+                    del{
+                        @include font("s-grey", 16px, -style, 150%);
+                        margin-left: 8px;
+                    }
+                }
+            }
+    
+            .productadd__cart{
+                display: none;
+                position: absolute;
+                width: 252px;
+                margin: auto;
+                text-align: center;
+                padding: 175px 20px;
+                box-sizing: border-box;
+                a{
+                    @include font("brown", 16px, "", 150%);
+                    @include button(12px 50px, "brown", none);
+                    text-decoration: none;
+                    font-weight: 600px;
+                    display: inline-block;
+                }
+                .productadd__card--item{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 24px;   
+                    // gap: 20px;
+                    box-sizing: border-box;
+                    ul{
+                        display: flex;
+                        align-items: center;
+                        gap: 2px;
+                        // max-width: 10px;
+                        margin-left: -15px;
+                        strong {
+                            @include font("light", 16px, "", 24px);
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+    
+            .shop__card:hover{
+                transform: scale(1.1);
+    
+            }
+    
+            .shop__card:hover .productadd__cart{
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                display: block;
+                background-color: rgba(51, 51, 51, 0.85);
+                opacity: 1;
+                
+                // transform: scale(1.1);
+            }
+    
+        }
+    
+        .home__product{
+            margin-bottom: 80px;
+            padding: 0;
+            a{
+                @include button(12px 74px, "brown", 2px solid $main-brown-color);
+                @include font("brown", 16px, -style, 150%);
+                font-weight: 600;
+                text-decoration: none;
+            }
+            a:hover{
+                color: #fff;
+                background-color: #B88E2F;
+            }
+        }
+    
+        .bt__wrapper{
+            background-color: $light-color;
+            .bt__rooms{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr;
+                align-items: center;
+                .bt__room__title{
+                    text-align: left;
+                    h2{
+                        @include font("s-dark", 40px, -style, 120%);
+                        font-weight: 700;
+                        max-width: 422px;
+                        text-align: left;
+                    }
+                    p{
+                        @include font("grey", 16px, -style, 150%);
+                        font-weight: 600;
+                        max-width: 368px;
+                    }
+                    a{
+                        @include font("light", 16px, -style, 150%);
+                        font-weight: 600;
+                        text-decoration: none;
+                        display: inline-block;
+                        margin-top: 25px;
+                        @include button(12px 36px, "light", 2px solid transparent);
+                    }
+                    a:hover{
+                        @include button(12px 36px, "brown", 2px solid $main-brown-color);
+                    }
+                }
+    
+                .bt__rooms__img{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    padding: 44px 0;
+                    // width: 70%;
+                    swiper-container {
+                        width: 400px;
+                        height: 582px;
+                      }
+                  
+                      swiper-slide {
+                        text-align: center;
+                        font-size: 18px;
+                        background: #fff;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      }
+                  
+                      swiper-slide img {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                      }
+                  
+                      swiper-container {
+                        margin-left: auto;
+                        margin-right: auto;
+                      }
+                }
+    
+    
+            }
+    
+    
+    
+    
+    
+        }
+    
+    
+        
+    
+    
+    }
+}
+
+
+@media screen and (max-width: 1250px) {
+    .swipr{
+        display: none;
+    }
+
+
+}
+
+
+@media screen and (max-width: 960px) {
+
+
+    main{
+        .browse__cards{
+            grid-template-columns: 1fr;
+        }
+        .shop__cards{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    .close{
+        display: flex;
+        border: none;
+        padding: 10px 15px;
+
+    }
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 0;
+        
+        .nav__menu{
+            display: none;  
+            gap: 75px;
+            a{
+                @include font(#000, 16px, -style, -height);
+                text-decoration: none;
+                font-weight: 500;
+            }
+            a:hover{
+                color: #B88E2F;
+            }
+        }
+        .nav__icons{
+
+            display: flex;
+            align-items: center;
+            display: none;
+            gap: 45px;
+        }
+    }
+
+}
+
+
+@media screen and (max-width: 850px) {
+    main{
+        .bt__wrapper{
+            .bt__rooms{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                .bt__rooms__img{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 700px) {
+    main{
+        .shop__cards{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
     }
 }
